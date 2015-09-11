@@ -34,7 +34,7 @@ class MotoPostStyler {
             'text' => __('Add new item', 'domain'), // text of the button to add new element
             'disabled' => false,
             'rules' => array(
-                'rootSelector' => '.my-gallery-item', // css selector of the internal object
+                'rootSelector' => '.my-page-item', // css selector of the internal object
                 'activeSelector' => '> a', // css selector of the active element
                 'activeClass' => 'active' // css class name of the active element
             ),
@@ -58,12 +58,7 @@ class MotoPostStyler {
             'default' => __('Item', 'domain'),
             'description' => __('Title Description', 'domain')
         ),
-        'id' => array(
-            'type' => 'image',
-            'label' => __('Image Source', 'domain'),
-            'default' => '',
-            'description' => __('Image Source Description', 'domain')
-        ),
+        
     ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
 
     $motopressCELibrary->addObject($pageObj);
@@ -81,7 +76,7 @@ function my_gallery_foo1($atts, $content = null) {
         'title' => ''
     ), $atts));
 
-    return '<div class="my-gallery"><h3>' . $title . '</h3>' . do_shortcode($content) . '</div>';
+    return '<div class="my-page">' . do_shortcode($content) . '</div>';
 }
 
 function my_gallery_item_foo1($atts, $content = null) {
@@ -97,7 +92,7 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgSrc = '//lorempixel.com/400/200/sports/1/';
     }
 
-    return '<div class="my-gallery-item"><a href="#"><img src="' . $imgSrc . '"><h4>' . $title . '</h4></a></div>';
+    return '<div class="my-page-item"><a href="#"><img src="' . $imgSrc . '"></a></div>';
 }
 
 
@@ -105,9 +100,9 @@ add_action('wp_footer','mp_library_add_nested_shortcodes_wp_footer1');
 
 function mp_library_add_nested_shortcodes_wp_footer1() {
 
-    echo "<style>.my-gallery-item {float: left;width: 50%;text-align: center;}.my-gallery-item > a {display: block;margin: 5px;}" .
-        ".my-gallery-item .active {outline: 1px solid red;}</style>";
+    echo "<style>.my-page-item {float: left;width: 50%;text-align: center;}.my-page-item > a {display: block;margin: 5px;}" .
+        ".my-page-item .active {outline: 1px solid red;}</style>";
 
-    echo "<script> jQuery('.my-gallery-item > a').on( 'click', function() {console.log( '$( this )' );}); </script>";
+    echo "<script> jQuery('.my-page-item > a').on( 'click', function() {console.log( '$( this )' );}); </script>";
 }
 ?>

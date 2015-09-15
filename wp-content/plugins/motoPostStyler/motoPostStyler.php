@@ -60,16 +60,41 @@ class MotoPostStyler {
         ),
         'title' => array(
             'type' => 'text',
-            'label' => __('Item Title', 'domain'),
-            'default' => __('Item', 'domain'),
-            'description' => __('Title Description', 'domain')
+            'label' => __('Front Title', 'domain'),
+            'default' => __('Walley Wines', 'domain'),
+            'description' => __('', 'domain')
         ),
-        'title' => array(
+        'back_title' => array(
             'type' => 'text',
-            'label' => __('Item Content', 'domain'),
-            'default' => __('Item', 'domain'),
-            'description' => __('Title Description', 'domain')
+            'label' => __('Back Title', 'domain'),
+            'default' => __('More Info', 'domain'),
+            // 'description' => __('', 'domain')
         ),
+        'front_content' => array(
+            'type' => 'text',
+            'label' => __('Front Content', 'domain'),
+            'default' => __('$15.50', 'domain'),
+            // 'description' => __('', 'domain')
+        ),
+        'back_content' => array(
+            'type' => 'text',
+            'label' => __('Back Content', 'domain'),
+            'default' => __('Sed porttitor lectus nibh. Praesent sapien massa.', 'domain'),
+            // 'description' => __('', 'domain')
+        ),
+        'link' => array(
+            'type' => 'text',
+            'label' => __('Link', 'domain'),
+            'default' => __('Buy Now!', 'domain'),
+            // 'description' => __('', 'domain')
+        )
+        // 'title1' => array(
+        //     'type' => 'select',
+        //     'list' => array(
+        //         '1' => 'asd',
+        //         '2' => 'asd1')
+            
+        // )
     ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
 
     $motopressCELibrary->addObject($pageObj);
@@ -93,7 +118,11 @@ function my_gallery_foo1($atts, $content = null) {
 function my_gallery_item_foo1($atts, $content = null) {
     extract(shortcode_atts(array(
         'id' => 0,
-        'title' => ''
+        'title' => '',
+        'back_title' => '',
+        'front_content' => '',
+        'back_content' => '',
+        'link' => ''
     ), $atts));
 
     if ( $id != 0 ) {
@@ -103,7 +132,7 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
     $pageItem = new PageItemStructure();
-    return $pageItem->pageItem($imgSrc);
+    return $pageItem->pageItem($imgSrc, $title, $back_title, $front_content, $back_content, $link);
 }
 
 add_action( 'wp_footer', 'bsp_inspect_add_styles' );

@@ -2,27 +2,27 @@
 
 class PageItemStructure {
 	
-	public function pageItem($img) {
+	public function pageItem($img, $title, $backTitle, $frontContent, $backContent, $link) {
 		$item = '<div class="my-page-item">
 			    <figure class="front-side">
 			    	<div class="box-section">
 			    		<div class="box-icon">
-			    			<img class="icon" src="'. $img .'">
+			    			<img class="icon" src="' . $img . '">
 			    		</div>
-			    		<h3 class="box-section-title">Valley Wines</h3>
+			    		<h3 class="box-section-title">' . $title . '</h3>
 			    		<div class="box-section-content">
-			    			<p>$15.50</p>
+			    			<p>' . $frontContent . '</p>
 			    		</div>
 			    	</div>
 			    </figure>
 			    <figure class="back-side">
 			    	<div class="box-section">
-			    		<h3 class="box-section-title">More info</h3>
+			    		<h3 class="box-section-title">' . $backTitle . '</h3>
 			    		<div class="box-section-content">
-			    			<p>Sed porttitor lectus nibh. Praesent sapien massa.</p>
+			    			<p>' . $backContent . '</p>
 			    		</div>
 			    		<div class="box-section-link">
-			    			<a href="#">Buy Now!</a>
+			    			<a href="#">' . $link . '</a>
 			    		</div>
 			    	</div>
 			    </figure>

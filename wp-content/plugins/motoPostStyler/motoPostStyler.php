@@ -8,7 +8,7 @@
  * Author URI: http://vovazubenko.com
  * License: GPL2
  */
-
+require 'includes/pageItemStructure.php';
 
 class MotoPostStyler {
 	function mp_library_add_shortcodes($motopressCELibrary) {
@@ -52,13 +52,24 @@ class MotoPostStyler {
     	), 0, MPCEObject::ENCLOSED);
 
     $pageItem = new MPCEObject('my_post_item', __('Post Item', 'domain'), null, array(
+        'id' => array(
+            'type' => 'image',
+            'label' => __('Image Source', 'domain'),
+            'default' => '',
+            'description' => __('Image Source Description', 'domain')
+        ),
         'title' => array(
             'type' => 'text',
             'label' => __('Item Title', 'domain'),
             'default' => __('Item', 'domain'),
             'description' => __('Title Description', 'domain')
         ),
-        
+        'title' => array(
+            'type' => 'text',
+            'label' => __('Item Content', 'domain'),
+            'default' => __('Item', 'domain'),
+            'description' => __('Title Description', 'domain')
+        ),
     ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
 
     $motopressCELibrary->addObject($pageObj);
@@ -89,20 +100,16 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgObj = wp_get_attachment_image_src( $id, 'thumbnail' );
         $imgSrc =  $imgObj[0];
     } else {
-        $imgSrc = '//lorempixel.com/400/200/sports/1/';
+        $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
-
-    return '<div class="my-page-item"><a href="#"><img src="' . $imgSrc . '"></a></div>';
+    $pageItem = new PageItemStructure();
+    return $pageItem->pageItem($imgSrc);
 }
 
+add_action( 'wp_footer', 'bsp_inspect_add_styles' );
 
-add_action('wp_footer','mp_library_add_nested_shortcodes_wp_footer1');
-
-function mp_library_add_nested_shortcodes_wp_footer1() {
-
-    echo "<style>.my-page-item {float: left;width: 50%;text-align: center;}.my-page-item > a {display: block;margin: 5px;}" .
-        ".my-page-item .active {outline: 1px solid red;}</style>";
-
-    echo "<script> jQuery('.my-page-item > a').on( 'click', function() {console.log( '$( this )' );}); </script>";
+function bsp_inspect_add_styles() {
+    wp_register_style('bsp_inspect_style', plugins_url('css/style.css', __FILE__));
+    wp_enqueue_style('bsp_inspect_style');
 }
 ?>

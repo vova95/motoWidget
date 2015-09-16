@@ -11,15 +11,18 @@
 require 'includes/pageItemStructure.php';
 
 class MotoPostStyler {
-	function mp_library_add_shortcodes($motopressCELibrary) {
 
+	public function mp_library_add_shortcodes($motopressCELibrary) {
+        $styles = array(
+            '0' => '',
+            '1' => '-food'
+        );
     // create new object
     $pageObj = new MPCEObject('motoWidget', __('PostStyler', 'domain'), null, array(
-        'title' => array(
-            'type' => 'text',
-            'label' => __('Post Title', 'domain'),
-            'default' => __('My PostStyler', 'domain'),
-            'description' => __('Title Description', 'domain')
+        'style' => array(
+            'type' => 'select',
+            'label' => __('Style', 'domain'),
+            'list' => $styles
         ),
         'elements' => array(
             'type' => 'group',
@@ -102,6 +105,8 @@ class MotoPostStyler {
 	}
 }
 
+global $chosenStyle;
+
 $moto = new MotoPostStyler();
 add_action('mp_library', array('MotoPostStyler', 'mp_library_add_shortcodes'));
 add_shortcode('my_post_item', 'my_gallery_item_foo1');
@@ -109,13 +114,18 @@ add_shortcode('motoWidget', 'my_gallery_foo1');
 
 function my_gallery_foo1($atts, $content = null) {
     extract(shortcode_atts(array(
-        'title' => ''
+        'style' => '0'
     ), $atts));
-
+    $chosenStyle = $style;
     return '<div class="my-page">' . do_shortcode($content) . '</div>';
 }
 
 function my_gallery_item_foo1($atts, $content = null) {
+    $styles = array(
+            '0' => '',
+            '1' => '-food'
+        );
+
     extract(shortcode_atts(array(
         'id' => 0,
         'title' => '',
@@ -132,7 +142,8 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
     $pageItem = new PageItemStructure();
-    return $pageItem->pageItem($imgSrc, $title, $back_title, $front_content, $back_content, $link);
+    var_dump($styles[1]);
+    return $pageItem->pageItem($styles[1], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
 }
 
 add_action( 'wp_footer', 'bsp_inspect_add_styles' );

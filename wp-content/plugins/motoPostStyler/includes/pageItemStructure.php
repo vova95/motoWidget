@@ -15,7 +15,7 @@ class PageItemStructure {
 			    		</div>
 			    	</div>
 			    </figure>
-			    <figure class="back-side">
+			    <figure class="back-side' . $style . '">
 			    	<div class="box-section">
 			    		<h3 class="box-section-title' . $style . '">' . $backTitle . '</h3>
 			    		<div class="box-section-content' . $style . '">

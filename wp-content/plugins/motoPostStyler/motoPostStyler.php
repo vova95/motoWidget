@@ -142,8 +142,8 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
     $pageItem = new PageItemStructure();
-    var_dump($styles[1]);
-    return $pageItem->pageItem($styles[1], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
+    var_dump($styles[$chosenStyle]);
+    return $pageItem->pageItem($styles[0], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
 }
 
 add_action( 'wp_footer', 'bsp_inspect_add_styles' );

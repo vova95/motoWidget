@@ -1,6 +1,6 @@
-..my-page { 
+.my-page { 
   
-  perspective: 800px;
+  perspective: 500000px;
 }
 .my-page-item-style1 {
   /*display: inline-block;*/

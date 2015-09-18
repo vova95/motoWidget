@@ -1,7 +1,7 @@
-/*.my-page { 
+.my-page { 
   
-  perspective: 800px;
-}*/
+  perspective: 500000px;
+}
 
 /*@font-face {
     font-family: 'Ultimate-set';
@@ -45,14 +45,14 @@
 .my-page-item-style4 .back-side-style4 {
   background: #f7f7f7;
   border: solid 1px #e4e4e4;
-  transform: rotateY( 180deg );
+  transform: rotateY( -180deg );
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .my-page-item-style4:hover {
-  transform: rotateY( 180deg );
+  transform: rotateY( -180deg );
 }
 .box-section {
   font-family: Helvetica,Arial,sans-serif;

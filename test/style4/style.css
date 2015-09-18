@@ -2,6 +2,21 @@
   
   perspective: 800px;
 }*/
+
+/*@font-face {
+    font-family: 'Ultimate-set';
+    src: url(http://ultimate.brainstormforce.com/wp-content/uploads/smile_fonts/Ultimate-set/A.Ultimate-set.css.pagespeed.cf.0xSe2I2K70.css);
+}*/
+.imageFont {
+  font-family: 'Ultimate-set';
+
+}
+.imageFont:before {
+  content: "\e7bb";
+  color: #de5034;
+  font-size: 110px;
+  font-style: normal; 
+}
 .my-page-item-style4 {
   width: 265px;
   height: 270px;
@@ -52,6 +67,7 @@
   border: 0;
   font-size: 100%;
   text-align: center;
+  
 }
 .icon-style4 {
   width: 65px;

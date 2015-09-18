@@ -2,7 +2,7 @@
   
   perspective: 800px;
 }
-.my-page-item {
+.my-page-item-style1 {
   /*display: inline-block;*/
   float: left;
   width: 170px;
@@ -13,7 +13,7 @@
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-.my-page-item figure {
+.my-page-item-style1 figure {
   margin: 0;
   display: block;
   position: absolute;
@@ -21,14 +21,15 @@
   height: 100%;
   backface-visibility: hidden;
 }
-.my-page-item .front-side {
+
+.my-page-item-style1 .front-side-style1 {
   background: rgb(171, 30, 23);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
-.my-page-item .back-side {
+.my-page-item-style1 .back-side-style1 {
   background: rgb(53, 25, 8);
   transform: rotateY( 180deg );
   -webkit-backface-visibility: hidden;
@@ -36,7 +37,7 @@
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.my-page-item:hover {
+.my-page-item-style1:hover {
   transform: rotateY( 180deg );
 }
 .box-section {
@@ -54,31 +55,31 @@
   font-size: 100%;
   text-align: center;
 }
-.icon {
+.icon-style1 {
   width: 90px;
   height: 90px;
 }
-.box-section-title {
+.box-section-title-style1 {
   color: white;
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
 }
-.box-section-content {
+.box-section-content-style1 {
   color: white;
   margin-bottom: 15px;
   font-size: 14px;
   line-height: 1.65em;
 }
-.box-section-content p {
+.box-section-content-style1 p {
   margin-top: 25px;
 }
-.box-section-link {
+.box-section-link-style1 {
   display: inline-block;
   background: #543f2e;
   
 }
-.box-section-link a {
+.box-section-link-style1 a {
   display: inline-block;
   margin: 5px auto 5px;
   padding: .3em .6em;
@@ -87,7 +88,99 @@
   text-decoration: none;
   color: #ffffff;
 }
-.my-page-item-food {
+
+
+
+.my-page-item-style2 {
+  width: 270px;
+  height: 230px;
+  float: left;
+  cursor: pointer;
+  margin: 15px;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+.my-page-item-style2 figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.my-page-item-style2 .front-side-style2 {
+  background: #fff;
+  border: 4px dashed rgb(239, 200, 74);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+}
+.my-page-item-style2 .back-side-style2 {
+  background: rgb(239, 200, 74);
+  transform: rotateY( 180deg );
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.my-page-item-style2:hover {
+  transform: rotateY( 180deg );
+}
+.box-section {
+  font-family: Helvetica,Arial,sans-serif;
+  text-align: center;
+  padding: 15px;
+  margin: 0;
+}
+.box-icon-style2 {
+  margin: 0 auto;
+  width: 65px;
+  height: 65px;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  text-align: center;
+}
+.icon-style2 {
+  width: 65px;
+  height: 65px;
+}
+.box-section-title-style2 {
+  color: #000;
+  margin: 15px 0 12px;
+  line-height: 1.3em;
+  font-size: 16px;
+}
+.box-section-content-style2 {
+  color: #000;
+  margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 1.7em;
+}
+.box-section-link-style2 {
+  display: inline-block;
+  background: #e14e36;
+  
+}
+.box-section-link-style2 a {
+  display: inline-block;
+  margin: 5px auto 5px;
+  padding: .3em .6em;
+  cursor: pointer;
+  font-size: 13px;
+  text-decoration: none;
+  color: #ffffff;
+}
+.my-page-item-style2 .back-side-style2 .box-section-content-style2{
+  color: #fff;
+}
+.my-page-item-style2 .back-side-style2 .box-section-title-style2{
+  color: #fff;
+}
+
+
+.my-page-item-style3 {
   width: 270px;
   height: 250px;
   float: left;
@@ -96,7 +189,15 @@
   transform-style: preserve-3d;
   transition: transform 1s;
 }
-.my-page-item-food .front-side-food {
+.my-page-item-style3 figure {
+  margin: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.my-page-item-style3 .front-side-style3 {
   border: dashed 2px #655643;
   background: #fff;
   backface-visibility: hidden;
@@ -104,7 +205,7 @@
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
-.my-page-item-food .back-side-food {
+.my-page-item-style3 .back-side-style3 {
   background: #655643;
   transform: rotateY( 180deg );
   -webkit-backface-visibility: hidden;
@@ -112,33 +213,42 @@
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-.my-page-item-food:hover {
+.my-page-item-style3:hover {
   transform: rotateY( 180deg );
 }
-.icon-food {
+.box-icon-style3 {
+  margin: 0 auto;
+  width: 130px;
+  height: 130px;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  text-align: center;
+}
+.icon-style3 {
   width: 130px;
   height: 130px;
 }
-.box-section-title-food {
+.box-section-title-style3 {
   color: #444444;
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
   margin-top: 20px;
 }
-.box-section-content-food {
+.box-section-content-style3 {
   color: #444444;
   margin-bottom: 15px;
   font-size: 14px;
   line-height: 1.65em;
 }
-.box-section-link-food {
+.box-section-link-style3 {
   display: inline-block;
   background: #dd9933;
   margin-top: 15px;
   
 }
-.box-section-link-food a {
+.box-section-link-style3 a {
   display: inline-block;
   margin: 5px auto 5px;
   padding: .3em .6em;
@@ -147,9 +257,9 @@
   text-decoration: none;
   color: #ffffff;
 }
-.my-page-item-food .back-side-food .box-section-content-food{
+.my-page-item-style3 .back-side-style3 .box-section-content-style3{
   color: #fff;
 }
-.my-page-item-food .back-side-food .box-section-title-food{
+.my-page-item-style3 .back-side-style3 .box-section-title-style3{
   color: #fff;
 }

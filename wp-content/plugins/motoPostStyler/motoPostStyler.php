@@ -12,17 +12,24 @@ require 'includes/pageItemStructure.php';
 
 class MotoPostStyler {
 
-	public function mp_library_add_shortcodes($motopressCELibrary) {
+    public static $chosenStyle;
+
+    public static function mp_library_add_shortcodes($motopressCELibrary) {
         $styles = array(
-            '0' => '',
-            '1' => '-food'
+            '0' => 'style1',
+            '1' => 'style2',
+            '2' => 'style3'
         );
     // create new object
     $pageObj = new MPCEObject('motoWidget', __('PostStyler', 'domain'), null, array(
         'style' => array(
             'type' => 'select',
             'label' => __('Style', 'domain'),
-            'list' => $styles
+            'list' => $styles,
+            'dependency' => array(
+                'title' => 'style1',
+                'front_content' => 'style2'
+            )
         ),
         'elements' => array(
             'type' => 'group',
@@ -52,7 +59,7 @@ class MotoPostStyler {
                 )
             )
         )
-    	), 0, MPCEObject::ENCLOSED);
+        ), 0, MPCEObject::ENCLOSED);
 
     $pageItem = new MPCEObject('my_post_item', __('Post Item', 'domain'), null, array(
         'id' => array(
@@ -101,14 +108,12 @@ class MotoPostStyler {
     ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
 
     $motopressCELibrary->addObject($pageObj);
-	$motopressCELibrary->addObject($pageItem);
-	}
+    $motopressCELibrary->addObject($pageItem);
+    }
 }
 
-global $chosenStyle;
 
-$moto = new MotoPostStyler();
-add_action('mp_library', array('MotoPostStyler', 'mp_library_add_shortcodes'));
+add_action('mp_library', 'MotoPostStyler::mp_library_add_shortcodes');
 add_shortcode('my_post_item', 'my_gallery_item_foo1');
 add_shortcode('motoWidget', 'my_gallery_foo1');
 
@@ -116,16 +121,25 @@ function my_gallery_foo1($atts, $content = null) {
     extract(shortcode_atts(array(
         'style' => '0'
     ), $atts));
-    $chosenStyle = $style;
+
+    MotoPostStyler::$chosenStyle = $style;
+    
     return '<div class="my-page">' . do_shortcode($content) . '</div>';
 }
 
 function my_gallery_item_foo1($atts, $content = null) {
     $styles = array(
-            '0' => '',
-            '1' => '-food'
+            '0' => 'style1',
+            '1' => 'style2',
+            '2' => 'style3'
         );
 
+    if (MotoPostStyler::$chosenStyle == 1) {
+        var_dump(1);
+    }
+    else {
+        var_dump(2);
+    }
     extract(shortcode_atts(array(
         'id' => 0,
         'title' => '',
@@ -142,8 +156,7 @@ function my_gallery_item_foo1($atts, $content = null) {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
     $pageItem = new PageItemStructure();
-    var_dump($styles[$chosenStyle]);
-    return $pageItem->pageItem($styles[0], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
+    return $pageItem->pageItem($styles[MotoPostStyler::$chosenStyle], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
 }
 
 add_action( 'wp_footer', 'bsp_inspect_add_styles' );

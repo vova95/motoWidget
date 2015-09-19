@@ -8,109 +8,10 @@
  * Author URI: http://vovazubenko.com
  * License: GPL2
  */
+
 require 'includes/pageItemStructure.php';
+require 'includes/MotoPost.php';
 
-class MotoPostStyler {
-
-    public static $chosenStyle;
-
-    public static function mp_library_add_shortcodes($motopressCELibrary) {
-        $styles = array(
-            '0' => 'style1',
-            '1' => 'style2',
-            '2' => 'style3'
-        );
-    // create new object
-    $pageObj = new MPCEObject('motoWidget', __('PostStyler', 'domain'), null, array(
-        'style' => array(
-            'type' => 'select',
-            'label' => __('Style', 'domain'),
-            'list' => $styles,
-            'dependency' => array(
-                'title' => 'style1',
-                'front_content' => 'style2'
-            )
-        ),
-        'elements' => array(
-            'type' => 'group',
-            'contains' => 'my_post_item', // nested shortcode name
-            'items' => array(
-                'label' => array(
-                    'default' => __('Item Title', 'domain'), // default
-                    'parameter' => 'title' // nested shortcode title attribute name
-                ),
-                'count' => 2 // number of items automatically created for new object
-            ),
-            'text' => __('Add new item', 'domain'), // text of the button to add new element
-            'disabled' => false,
-            'rules' => array(
-                'rootSelector' => '.my-page-item', // css selector of the internal object
-                'activeSelector' => '> a', // css selector of the active element
-                'activeClass' => 'active' // css class name of the active element
-            ),
-            'events' => array(
-                'onActive' => array( // javascript event when item is activated
-                    'selector' => '> a', // css selector of the element
-                    'event' => 'click' // event name
-                ),
-                'onInactive' => array( // javascript event when item is de-activated
-                    'selector' => '> a', // css selector of the element
-                    'event' => 'click' // event name
-                )
-            )
-        )
-        ), 0, MPCEObject::ENCLOSED);
-
-    $pageItem = new MPCEObject('my_post_item', __('Post Item', 'domain'), null, array(
-        'id' => array(
-            'type' => 'image',
-            'label' => __('Image Source', 'domain'),
-            'default' => '',
-            'description' => __('Image Source Description', 'domain')
-        ),
-        'title' => array(
-            'type' => 'text',
-            'label' => __('Front Title', 'domain'),
-            'default' => __('Walley Wines', 'domain'),
-            'description' => __('', 'domain')
-        ),
-        'back_title' => array(
-            'type' => 'text',
-            'label' => __('Back Title', 'domain'),
-            'default' => __('More Info', 'domain'),
-            // 'description' => __('', 'domain')
-        ),
-        'front_content' => array(
-            'type' => 'text',
-            'label' => __('Front Content', 'domain'),
-            'default' => __('$15.50', 'domain'),
-            // 'description' => __('', 'domain')
-        ),
-        'back_content' => array(
-            'type' => 'text',
-            'label' => __('Back Content', 'domain'),
-            'default' => __('Sed porttitor lectus nibh. Praesent sapien massa.', 'domain'),
-            // 'description' => __('', 'domain')
-        ),
-        'link' => array(
-            'type' => 'text',
-            'label' => __('Link', 'domain'),
-            'default' => __('Buy Now!', 'domain'),
-            // 'description' => __('', 'domain')
-        )
-        // 'title1' => array(
-        //     'type' => 'select',
-        //     'list' => array(
-        //         '1' => 'asd',
-        //         '2' => 'asd1')
-            
-        // )
-    ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
-
-    $motopressCELibrary->addObject($pageObj);
-    $motopressCELibrary->addObject($pageItem);
-    }
-}
 
 
 add_action('mp_library', 'MotoPostStyler::mp_library_add_shortcodes');
@@ -128,25 +29,22 @@ function my_gallery_foo1($atts, $content = null) {
 }
 
 function my_gallery_item_foo1($atts, $content = null) {
-    $styles = array(
-            '0' => 'style1',
-            '1' => 'style2',
-            '2' => 'style3'
+    $effects = array(
+            'right' => array('my-page-item-right', 'back-side-item-right'),
+            'left' => array('my-page-item-left', 'back-side-item-left'),
+            'up' => array('my-page-item-up', 'back-side-item-up'),
+            'down' => array('my-page-item-down', 'back-side-item-down'),
         );
 
-    if (MotoPostStyler::$chosenStyle == 1) {
-        var_dump(1);
-    }
-    else {
-        var_dump(2);
-    }
     extract(shortcode_atts(array(
         'id' => 0,
         'title' => '',
         'back_title' => '',
         'front_content' => '',
         'back_content' => '',
-        'link' => ''
+        'link' => '',
+        'content' => '',
+        'effect' => 'right'
     ), $atts));
 
     if ( $id != 0 ) {
@@ -155,14 +53,22 @@ function my_gallery_item_foo1($atts, $content = null) {
     } else {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
+    MotoPostStyler::addContentToStyle($content);
+    
+    $id = MotoPostStyler::$chosenStyle;
+    $chosenEffect = $effects[$effect];
     $pageItem = new PageItemStructure();
-    return $pageItem->pageItem($styles[MotoPostStyler::$chosenStyle], $imgSrc, $title, $back_title, $front_content, $back_content, $link);
+    return $pageItem->pageItem(MotoPostStyler::$styles, $id, $imgSrc, $title, $back_title, $front_content, $back_content, $link, $chosenEffect);
 }
 
 add_action( 'wp_footer', 'bsp_inspect_add_styles' );
 
 function bsp_inspect_add_styles() {
-    wp_register_style('bsp_inspect_style', plugins_url('css/style.css', __FILE__));
-    wp_enqueue_style('bsp_inspect_style');
+    wp_register_style('ultimate-set', 'http://ultimate.brainstormforce.com/wp-content/uploads/smile_fonts/Ultimate-set/A.Ultimate-set.css.pagespeed.cf.0xSe2I2K70.css');
+    wp_register_style('post_styler', plugins_url('css/style.css', __FILE__));
+    wp_enqueue_style('ultimate-set');
+    wp_enqueue_style('post_styler');
 }
+
+
 ?>

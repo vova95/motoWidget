@@ -53,7 +53,7 @@ class PageItemStructure {
 						    			<p>' . $backContent . '</p>
 						    		</div>
 						    		<div class="box-section-link-' . $styles[$styleId] . ' link-onhover">
-						    			<a href="#">' . $link . '</a>
+						    			<a href="#" class="link-onhover">' . $link . '</a>
 						    		</div>
 						    	</div>
 						    </figure>
@@ -81,7 +81,7 @@ class PageItemStructure {
 						    			<p>' . $backContent . '</p>
 						    		</div>
 						    		<div class="box-section-link-' . $styles[$styleId] . ' link-onhover">
-						    			<a href="#">' . $link . '</a>
+						    			<a href="#" class="link-onhover">' . $link . '</a>
 						    		</div>
 						    	</div>
 						    </figure>

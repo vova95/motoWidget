@@ -14,23 +14,6 @@ class MotoPostStyler {
                                 '5' => 'style6'
                             );
 
-    public static function addContentToStyle($content, $postId, $style) {
-        echo '<style>.image-font-' . $style . '-' . $postId . ':before {
-                  content: "\\' . $content . '";
-            }</style>';
-    }
-
-    public static function addFrontsideAndBacksideBackgroundColor($colorFront, $colorBack, $postId, $style) {
-        echo '<style>
-                .front-side-' . $style . '-' . $postId . ': {
-                    background: ' . $colorFront . ';
-                }
-                .back-side-' . $style . '-' . $postId . ': {
-                    background: ' . $colorBack . ';
-                }
-             </style>';
-    }
-
     public static function mp_library_add_shortcodes($motopressCELibrary) {
         $effects = array(
             'right' => 'right',
@@ -120,12 +103,12 @@ class MotoPostStyler {
             'list' => $effects
         ),
         'colorFront' => array(
-            'type' => 'text',
+            'type' => 'color-picker',
             'label' => __('Frontside Background Color', 'domain'),
             'default' => __('rgb(171, 30, 23)', 'domain')
         ),
         'colorBack' => array(
-            'type' => 'text',
+            'type' => 'color-picker',
             'label' => __('Backside Background Color', 'domain'),
             'default' => __('rgb(171, 30, 23)', 'domain')
         )

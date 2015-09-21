@@ -1,6 +1,7 @@
 @media screen and (max-width: 767px) {
 	.my-page-item-style1 {
 	  width: 100%;
+	  min-height: 215px; 
 	}
 	.my-page-item-style2 {
 	  width: 100%;

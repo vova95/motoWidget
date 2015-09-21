@@ -11,6 +11,7 @@
 
 require 'includes/pageItemStructure.php';
 require 'includes/MotoPost.php';
+require 'includes/styleChanger.php';
 
 
 
@@ -50,16 +51,18 @@ function my_gallery_item_foo1($atts, $content = null) {
     ), $atts));
 
     if ( $id != 0 ) {
-        $imgObj = wp_get_attachment_image_src( $id, 'thumbnail' );
+        $imgObj = wp_get_attachment_image_src( $id, 'full' );
+        // var_dump($imgObj);
         $imgSrc =  $imgObj[0];
     } else {
-        $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
+        $imgSrc = ''. plugins_url() .'/motoPostStyler/img/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
     $styles = MotoPostStyler::$styles;
     $styleId = MotoPostStyler::$chosenStyle;
 
-    MotoPostStyler::addContentToStyle($content, MotoPostStyler::$postId, $styles[$styleId]);
-    MotoPostStyler::addFrontsideAndBacksideBackgroundColor($colorFront, $colorBack, MotoPostStyler::$postId, $styles[$styleId]);
+    $styleChanger = new StyleChanger();
+    $styleChanger->addContentToStyle($content, MotoPostStyler::$postId, $styles[$styleId]);
+    $styleChanger->addFrontsideAndBacksideBackgroundColor($colorFront, $colorBack, MotoPostStyler::$postId, $styles[$styleId]);
     
     
     $chosenEffect = $effects[$effect];

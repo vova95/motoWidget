@@ -3,22 +3,32 @@ class MotoPostStyler {
 
     public static $chosenStyle;
 
+    public static $postId;
+
     public static $styles = array(
                                 '0' => 'style1',
                                 '1' => 'style2',
                                 '2' => 'style3',
-                                '3' => 'style4'
+                                '3' => 'style4',
+                                '4' => 'style5',
+                                '5' => 'style6'
                             );
 
-    public static function addContentToStyle($content) {
-    echo '<style>.imageFont:before {
-              content: "\\' . $content . '";
-              color: #de5034;
-              font-size: 110px;
-              font-style: normal;
-              line-height: 1;
-              margin: 0;
-        }</style>';
+    public static function addContentToStyle($content, $postId, $style) {
+        echo '<style>.image-font-' . $style . '-' . $postId . ':before {
+                  content: "\\' . $content . '";
+            }</style>';
+    }
+
+    public static function addFrontsideAndBacksideBackgroundColor($colorFront, $colorBack, $postId, $style) {
+        echo '<style>
+                .front-side-' . $style . '-' . $postId . ': {
+                    background: ' . $colorFront . ';
+                }
+                .back-side-' . $style . '-' . $postId . ': {
+                    background: ' . $colorBack . ';
+                }
+             </style>';
     }
 
     public static function mp_library_add_shortcodes($motopressCELibrary) {
@@ -34,10 +44,7 @@ class MotoPostStyler {
             'type' => 'select',
             'label' => __('Style', 'domain'),
             'list' => MotoPostStyler::$styles,
-            'dependency' => array(
-                'title' => 'style1',
-                'front_content' => 'style2'
-            )
+            'class' => 'asd'
         ),
         'elements' => array(
             'type' => 'group',
@@ -111,6 +118,16 @@ class MotoPostStyler {
             'type' => 'select',
             'label' => __('Effect', 'domain'),
             'list' => $effects
+        ),
+        'colorFront' => array(
+            'type' => 'text',
+            'label' => __('Frontside Background Color', 'domain'),
+            'default' => __('rgb(171, 30, 23)', 'domain')
+        ),
+        'colorBack' => array(
+            'type' => 'text',
+            'label' => __('Backside Background Color', 'domain'),
+            'default' => __('rgb(171, 30, 23)', 'domain')
         )
     ), null, MPCEObject::ENCLOSED, MPCEObject::RESIZE_NONE, false);
 

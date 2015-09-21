@@ -24,7 +24,7 @@ function my_gallery_foo1($atts, $content = null) {
     ), $atts));
 
     MotoPostStyler::$chosenStyle = $style;
-    
+    MotoPostStyler::$postId = 0;
     return '<div class="my-page">' . do_shortcode($content) . '</div>';
 }
 
@@ -44,7 +44,9 @@ function my_gallery_item_foo1($atts, $content = null) {
         'back_content' => '',
         'link' => '',
         'content' => '',
-        'effect' => 'right'
+        'effect' => 'right',
+        'colorFront' => '',
+        'colorBack' => ''
     ), $atts));
 
     if ( $id != 0 ) {
@@ -53,21 +55,38 @@ function my_gallery_item_foo1($atts, $content = null) {
     } else {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
-    MotoPostStyler::addContentToStyle($content);
+    $styles = MotoPostStyler::$styles;
+    $styleId = MotoPostStyler::$chosenStyle;
+
+    MotoPostStyler::addContentToStyle($content, MotoPostStyler::$postId, $styles[$styleId]);
+    MotoPostStyler::addFrontsideAndBacksideBackgroundColor($colorFront, $colorBack, MotoPostStyler::$postId, $styles[$styleId]);
     
-    $id = MotoPostStyler::$chosenStyle;
+    
     $chosenEffect = $effects[$effect];
     $pageItem = new PageItemStructure();
-    return $pageItem->pageItem(MotoPostStyler::$styles, $id, $imgSrc, $title, $back_title, $front_content, $back_content, $link, $chosenEffect);
+    return $pageItem->pageItem($styles, $styleId, $imgSrc, $title, $back_title, $front_content, $back_content, $link, $chosenEffect, MotoPostStyler::$postId++);
 }
 
-add_action( 'wp_footer', 'bsp_inspect_add_styles' );
+add_action( 'wp_head', 'bsp_inspect_add_styles' );
+add_action( 'wp_footer', 'bsp_inspect_add_scripts' );
 
 function bsp_inspect_add_styles() {
     wp_register_style('ultimate-set', 'http://ultimate.brainstormforce.com/wp-content/uploads/smile_fonts/Ultimate-set/A.Ultimate-set.css.pagespeed.cf.0xSe2I2K70.css');
+    wp_register_style('bsp_inspect_colorpicker', plugins_url('libraries/colorpicker/dist/css/bootstrap-colorpicker.min.css', __FILE__));
     wp_register_style('post_styler', plugins_url('css/style.css', __FILE__));
+    wp_register_style('post_media_styler', plugins_url('css/media.css', __FILE__));
+    wp_enqueue_style('bsp_inspect_colorpicker');
     wp_enqueue_style('ultimate-set');
     wp_enqueue_style('post_styler');
+    wp_enqueue_style('post_media_styler');
+}
+function bsp_inspect_add_scripts() {
+    wp_register_script('bsp_inspect_colorpicker_admin', plugins_url('libraries/colorpicker/dist/js/bootstrap-colorpicker.js', __FILE__));
+    wp_register_script('jquery_script', plugins_url('js/jquery.min.js', __FILE__));
+    wp_register_script('post_app_script', plugins_url('js/app.js', __FILE__));
+    wp_enqueue_script('bsp_inspect_colorpicker_admin');
+    wp_enqueue_script('jquery_script');
+    wp_enqueue_script('post_app_script');
 }
 
 

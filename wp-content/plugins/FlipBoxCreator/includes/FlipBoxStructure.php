@@ -2,93 +2,44 @@
 
 class FlipBoxStructure {
 	
-	public function generateFlipBoxLayout($styles, $styleId, $img, $title, $backTitle, $frontContent, $backContent, $link, $effect, $postId) {
-		switch ($styleId) {
-			case 0:
-			case 1:
-			case 2:
-				$item = '<div class="my-page-item-' . $styles[$styleId] . ' ' . $effect[0] . ' ' . $effect[0] . '-onclick post-onclick">
-						    <figure class="front-side-' . $styles[$styleId] . ' front-side-' . $styles[$styleId] . '-' . $postId . '">
-						    	<div class="box-section">
-						    		<div class="box-icon-' . $styles[$styleId] . '">
-						    			<img class="icon-' . $styles[$styleId] . '" src="' . $img . '">
-						    		</div>
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $title . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $frontContent . '</p>
-						    		</div>
-						    	</div>
-						    </figure>
-						    <figure class="back-side-' . $styles[$styleId] . ' ' . $effect[1] . ' back-side-' . $styles[$styleId] . '-' . $postId . '">
-						    	<div class="box-section">
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $backTitle . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $backContent . '</p>
-						    		</div>
-						    		<div class="box-section-link-' . $styles[$styleId] . ' link-onhover">
-						    			<a href="#">' . $link . '</a>
-						    		</div>
-						    	</div>
-						    </figure>
-						</div>';
-				break;
-			case 3:
-			case 4:
-				$item = '<div class="my-page-item-' . $styles[$styleId] . ' ' . $effect[0] . ' ' . $effect[0] . '-onclick post-onclick">
-						    <figure class="front-side-' . $styles[$styleId] . ' front-side-' . $styles[$styleId] . '-' . $postId . '">
-						    	<div class="box-section">
-						    		<div class="box-icon-' . $styles[$styleId] . '">
-						    			<i class="image-font image-font-' . $styles[$styleId] . ' image-font-' . $styles[$styleId] . '-' . $postId . '"></i>
-						    		</div>
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $title . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $frontContent . '</p>
-						    		</div>
-						    	</div>
-						    </figure>
-						    <figure class="back-side-' . $styles[$styleId] . ' ' . $effect[1] . ' back-side-' . $styles[$styleId] . '-' . $postId . '">
-						    	<div class="box-section">
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $backTitle . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $backContent . '</p>
-						    		</div>
-						    		<div class="box-section-link-' . $styles[$styleId] . ' link-onhover">
-						    			<a href="#" class="link-onhover">' . $link . '</a>
-						    		</div>
-						    	</div>
-						    </figure>
-						</div>';
-				break;
-			case 5:
-				$item = '<div class="my-page-item-' . $styles[$styleId] . ' ' . $effect[0] . ' ' . $effect[0] . '-onclick post-onclick">
-						    <figure class="front-side-' . $styles[$styleId] . '">
-						    	<div class="box-section">
-						    		<div class="box-icon-' . $styles[$styleId] . '">
-						    			<div class="icon-circle">
-						    				<i class="image-font image-font-' . $styles[$styleId] . ' image-font-' . $styles[$styleId] . '-' . $postId . '"></i>
-						    			</div>
-						    		</div>
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $title . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $frontContent . '</p>
-						    		</div>
-						    	</div>
-						    </figure>
-						    <figure class="back-side-' . $styles[$styleId] . ' ' . $effect[1] . '">
-						    	<div class="box-section">
-						    		<h3 class="box-section-title-' . $styles[$styleId] . '">' . $backTitle . '</h3>
-						    		<div class="box-section-content-' . $styles[$styleId] . '">
-						    			<p>' . $backContent . '</p>
-						    		</div>
-						    		<div class="box-section-link-' . $styles[$styleId] . ' link-onhover">
-						    			<a href="#" class="link-onhover">' . $link . '</a>
-						    		</div>
-						    	</div>
-						    </figure>
-						</div>';
-				break;
+	public function generateFlipBoxLayout($arguments, $postId) {
+
+		if ($arguments['style'] == 'style4' || $arguments['style'] == 'style5' || $arguments['style'] == 'style6') {
+			$iconHtml = '<div class="icon-circle-' . $arguments['style'] . '">
+						<i class="image-font image-font-' . $arguments['style'] . ' image-font-' . $arguments['style'] . '-' . $postId . ' ' . $arguments['content'] . '"></i>
+					</div>';
+		} else {
+			$iconHtml = '<img class="icon-' . $arguments['style'] . '" src="' . $arguments['imgSrc'] . '">';
 		}
 
+		$item = '<div class="my-page-item-' . $arguments['style'] . ' ' . $arguments['effect'][0] . ' ' . $arguments['effect'][0] . '-onclick post-onclick">
+				    <figure class="front-side-' . $arguments['style'] . ' front-side-' . $arguments['style'] . '-' . $postId . '">
+				    	<div class="box-section">
+				    		<div class="box-icon-' . $arguments['style'] . '">
+				    			' . $iconHtml . '
+				    		</div>
+				    		<h3 class="box-section-title-' . $arguments['style'] . '">' . $arguments['title'] . '</h3>
+				    		<div class="box-section-content-' . $arguments['style'] . '">
+				    			<p>' . $arguments['front_content'] . '</p>
+				    		</div>
+				    	</div>
+				    </figure>
+				    <figure class="back-side-' . $arguments['style'] . ' ' . $arguments['effect'][1] . ' back-side-' . $arguments['style'] . '-' . $postId . '">
+				    	<div class="box-section">
+				    		<h3 class="box-section-title-' . $arguments['style'] . '">' . $arguments['back_title'] . '</h3>
+				    		<div class="box-section-content-' . $arguments['style'] . '">
+				    			<p>' . $arguments['back_content'] . '</p>
+				    		</div>
+				    		<div class="box-section-link-' . $arguments['style'] . ' link-onhover">
+				    			<a href="' . $arguments['link'] . '">' . $arguments['link_text'] . '</a>
+				    		</div>
+				    	</div>
+				    </figure>
+				</div>
+				<style>
+				.image-font-' . $arguments['style'] . '-' . $postId . ':before {
+                  color: ' . $arguments['font_color'] . ';
+            	}</style>';
 		
 		return $item;
 	}

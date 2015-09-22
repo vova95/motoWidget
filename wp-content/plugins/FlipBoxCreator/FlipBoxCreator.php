@@ -11,6 +11,7 @@
 
 require 'includes/FlipBoxMenu.php';
 require 'includes/FlipBoxStructure.php';
+require 'includes/styleChanger.php';
 
 $flipBoxMenu = new FlipBoxMenu();
 add_action('mp_library', array($flipBoxMenu, 'mp_library_add_shortcodes'));
@@ -26,19 +27,25 @@ function generateFlipBox($atts, $content = null) {
         );
 
     extract(shortcode_atts(array(
-        'style' => '0',
+        'style' => 'style1',
         'id' => 0,
-        'title' => '',
-        'back_title' => '',
-        'front_content' => '',
-        'back_content' => '',
-        'link' => '',
         'content' => '',
+        'font_color' => '',
         'effect' => 'right',
-        'colorFront' => '',
-        'colorBack' => ''
+        'title' => '',
+        'front_content' => '',
+        'back_title' => '',
+        'back_content' => '',
+        'link_text' => '',
+        'link' => '',
+        'color_front' => '',
+        'color_back' => '',
+        'border_color_front' => '',
+        'border_color_back' => '',
+        'front_text_color' => '',
+        'back_text_color' => '',
+        'link_color' => ''
     ), $atts));
-
     $postId = 0;
     if ( $id != 0 ) {
         $imgObj = wp_get_attachment_image_src( $id, 'full' );
@@ -47,12 +54,63 @@ function generateFlipBox($atts, $content = null) {
     } else {
         $imgSrc = ''. plugins_url() .'/motoPostStyler/img/xparty1.png.pagespeed.ic.UyqFIK62E3.webp';
     }
-    $flipBoxMenu = new FlipBoxMenu();
-    $flipBoxStructure = new FlipBoxStructure();
-    $styles = $flipBoxMenu->styles;
-    $chosenEffect = $effects[$effect];
 
-    return $flipBoxStructure->generateFlipBoxLayout($styles, $style, $imgSrc, $title, $back_title, $front_content, $back_content, $link, $chosenEffect, $postId);
+    $flipBoxStructure = new FlipBoxStructure();
+    $chosenEffect = $effects[$effect];
+    $arguments = array(
+        'style' => $style,
+        'imgSrc' => $imgSrc,
+        'content' => $content,
+        'font_color' => $font_color,
+        'effect' => $chosenEffect,
+        'title' => $title,
+        'front_content' => $front_content,
+        'back_title' => $back_title,
+        'back_content' => $back_content,
+        'link_text' => $link_text,
+        'link' => $link,
+        'color_front' => $color_front,
+        'color_back' => $color_back,
+        'border_color_front' => $border_color_front,
+        'border_color_back' => $border_color_back,
+        'front_text_color' => $front_text_color,
+        'back_text_color' => $back_text_color,
+        'link_color' => $link_color
+    );
+    // var_dump($arguments['link_color']);
+    $boxId = generateId($style, $content, $imgSrc, $color_front, $color_back, $font_color);
+    return $flipBoxStructure->generateFlipBoxLayout($arguments, $boxId);
 }
 
+
+
+add_action( 'wp_enqueue_scripts', 'flip_box_add_styles' );
+add_action( 'admin_enqueue_scripts', 'flip_box_add_styles' );
+add_action( 'wp_enqueue_scripts', 'flip_box_add_scripts' );
+
+function generateId($style, $content, $imgSrc, $colorFront, $colorBack, $fontColor) {
+    $id .= $style;
+    $id .= $content;
+    $id .= $imgSrc;
+    $id .= $colorFront;
+    $id .= $colorBack;
+    $id .= $fontColor;
+    $id = md5($id);
+    return $id;
+}
+
+function flip_box_add_styles() {
+    wp_register_style('ultimate-set', 'http://ultimate.brainstormforce.com/wp-content/uploads/smile_fonts/Ultimate-set/A.Ultimate-set.css.pagespeed.cf.0xSe2I2K70.css');
+    wp_register_style('post_styler', plugins_url('css/style.css', __FILE__));
+    wp_register_style('post_media_styler', plugins_url('css/media.css', __FILE__));
+    wp_enqueue_style('ultimate-set');
+    wp_enqueue_style('post_styler');
+    wp_enqueue_style('post_media_styler');
+}
+function flip_box_add_scripts() {
+    wp_register_script('jquery_script', plugins_url('js/jquery.min.js', __FILE__));
+    wp_register_script('post_app_script', plugins_url('js/app.js', __FILE__));
+    wp_enqueue_script('jquery_script');
+    wp_enqueue_script('post_app_script');
+}
 ?>

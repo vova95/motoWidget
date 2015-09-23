@@ -51,14 +51,14 @@
   backface-visibility: hidden;
 }
 .my-page-item-style1 .front-side-style1 {
-  background: rgb(171, 30, 23);
+  /*background: rgb(171, 30, 23);*/
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style1 .back-side-style1 {
-  background: rgb(53, 25, 8);
+  /*background: rgb(53, 25, 8);*/
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -101,7 +101,7 @@
 .box-section-link-style1 {
   color: #fff;
   display: inline-block;
-  background: #543f2e;
+  /*background: #543f2e;*/
   
 }
 .box-section-link-style1 a {
@@ -111,7 +111,7 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff !important;
+  /*color: #ffffff !important;*/
 }
 
 
@@ -135,15 +135,15 @@
 }
 
 .my-page-item-style2 .front-side-style2 {
-  background: #fff;
-  border: 4px dashed rgb(239, 200, 74);
+  /*background: #fff;*/
+  border: 4px dashed;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style2 .back-side-style2 {
-  background: rgb(239, 200, 74);
+  /*background: rgb(239, 200, 74);*/
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -169,20 +169,20 @@
   height: 65px;
 }
 .box-section-title-style2 {
-  color: #000;
+  /*color: #000;*/
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
 }
 .box-section-content-style2 {
-  color: #000;
+  /*color: #000;*/
   margin-bottom: 15px;
   font-size: 15px;
   line-height: 1.7em;
 }
 .box-section-link-style2 {
   display: inline-block;
-  background: #e14e36;
+  /*background: #e14e36;*/
   
 }
 .box-section-link-style2 a {
@@ -192,13 +192,13 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 .my-page-item-style2 .back-side-style2 .box-section-content-style2{
-  color: #fff;
+  /*color: #fff;*/
 }
 .my-page-item-style2 .back-side-style2 .box-section-title-style2{
-  color: #fff;
+  /*color: #fff;*/
 }
 
 
@@ -220,15 +220,15 @@
   backface-visibility: hidden;
 }
 .my-page-item-style3 .front-side-style3 {
-  border: dashed 2px #655643;
-  background: #fff;
+  border: dashed 2px;
+  /*background: #fff;*/
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style3 .back-side-style3 {
-  background: #655643;
+  /*background: #655643;*/
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -248,21 +248,21 @@
   height: 130px;
 }
 .box-section-title-style3 {
-  color: #444444;
+  /*color: #444444;*/
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
   margin-top: 20px;
 }
 .box-section-content-style3 {
-  color: #444444;
+  /*color: #444444;*/
   margin-bottom: 15px;
   font-size: 14px;
   line-height: 1.65em;
 }
 .box-section-link-style3 {
   display: inline-block;
-  background: #dd9933;
+  /*background: #dd9933;*/
   margin-top: 15px;
   
 }
@@ -273,13 +273,13 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 .my-page-item-style3 .back-side-style3 .box-section-content-style3{
-  color: #fff;
+  /*color: #fff;*/
 }
 .my-page-item-style3 .back-side-style3 .box-section-title-style3{
-  color: #fff;
+  /*color: #fff;*/
 }
 
 
@@ -311,16 +311,16 @@
   backface-visibility: hidden;
 }
 .my-page-item-style4 .front-side-style4 {
-  background: #f7f7f7;
-  border: solid 1px #e4e4e4;
+  /*background: #f7f7f7;*/
+  border: solid 1px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style4 .back-side-style4 {
-  background: #f7f7f7;
-  border: solid 1px #e4e4e4;
+  /*background: #f7f7f7;*/
+  border: solid 1px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -347,20 +347,20 @@
   height: 65px;
 }
 .box-section-title-style4 {
-  color: #000;
+  /*color: #000;*/
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
 }
 .box-section-content-style4 {
-  color: #000;
+  /*color: #000;*/
   margin-bottom: 15px;
   font-size: 15px;
   line-height: 1.7em;
 }
 .box-section-link-style4 {
   display: inline-block;
-  background: #e14e36;
+  /*background: #e14e36;*/
   
 }
 .box-section-link-style4 a {
@@ -370,13 +370,13 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 .my-page-item-style4 .back-side-style4 .box-section-content-style4{
-  color: #000;
+  /*color: #000;*/
 }
 .my-page-item-style4 .back-side-style4 .box-section-title-style4{
-  color: #000;
+  /*color: #000;*/
 }
 
 
@@ -407,16 +407,16 @@
   backface-visibility: hidden;
 }
 .my-page-item-style5 .front-side-style5 {
-  background: #f7f7f7;
-  border: solid 1px #e4e4e4;
+  /*background: #f7f7f7;*/
+  border: solid 1px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style5 .back-side-style5 {
-  background: #f7f7f7;
-  border: solid 1px #e4e4e4;
+  /*background: #f7f7f7;*/
+  border: solid 1px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
@@ -436,13 +436,13 @@
   height: 65px;
 }
 .box-section-title-style5 {
-  color: #000;
+  /*color: #000;*/
   margin: 15px 0 0;
   line-height: 1.3em;
   font-size: 16px;
 }
 .box-section-content-style5 {
-  color: #000;
+  /*color: #000;*/
   margin-bottom: 10px;
   font-size: 15px;
   line-height: 1.7em;
@@ -458,7 +458,7 @@
 }
 .box-section-link-style5 {
   display: inline-block;
-  background: #e14e36;
+  /*background: #e14e36;*/
   
 }
 .box-section-link-style5 a {
@@ -468,13 +468,13 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 .my-page-item-style5 .back-side-style5 .box-section-content-style5 {
-  color: #000;
+  /*color: #000;*/
 }
 .my-page-item-style5 .back-side-style5 .box-section-title-style5 {
-  color: #000;
+  /*color: #000;*/
 }
 
 
@@ -498,16 +498,16 @@
   backface-visibility: hidden;
 }
 .my-page-item-style6 .front-side-style6 {
-  background: #fff;
-  border: 7px solid rgb(217, 221, 224);
+  /*background: #fff;*/
+  border: 7px solid;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
 }
 .my-page-item-style6 .back-side-style6 {
-  background: rgb(148, 213, 51);
-  border: 7px solid rgb(164, 164, 164);
+  /*background: rgb(148, 213, 51);*/
+  border: 7px solid;
   transform: rotateY( 180deg );
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -545,20 +545,20 @@
   height: 65px;
 }
 .box-section-title-style6 {
-  color: #000;
+  /*color: #000;*/
   margin: 15px 0 12px;
   line-height: 1.3em;
   font-size: 16px;
 }
 .box-section-content-style6 {
-  color: #000;
+  /*color: #000;*/
   margin-bottom: 15px;
   font-size: 15px;
   line-height: 1.7em;
 }
 .box-section-link-style6 {
   display: inline-block;
-  background: #72aa1f;;
+  /*background: #72aa1f;;*/
   
 }
 .box-section-link-style6 a {
@@ -568,12 +568,12 @@
   cursor: pointer;
   font-size: 13px;
   text-decoration: none;
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 
 .my-page-item-style6 .back-side-style6 .box-section-content-style6{
-  color: #fff;
+  /*color: #fff;*/
 }
 .my-page-item-style6 .back-side-style6 .box-section-title-style6{
-  color: #fff;
+  /*color: #fff;*/
 }

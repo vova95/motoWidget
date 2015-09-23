@@ -23,18 +23,23 @@ class FlipBoxMenu
                 'style3' => 'style3',
                 'style4' => 'style4',
                 'style5' => 'style5',
-                'style6' => 'style6'
+                'style6' => 'style6',
+                'custom' => 'custom'
             )
         ),
-        // 'icon_type' => array(
-        //     'type' => 'radio-buttons',
-        //     'label' => __('Icon Type', 'domain'),
-        //     'list' => array(
-        //         'image_icon' => 'Image Icon',
-        //         'font_icon' => 'Font Icon'
-        //     ),
-        //     'default' => 'image_icon'
-        // ),
+        'icon_type' => array(
+            'type' => 'radio-buttons',
+            'label' => __('Icon Type', 'domain'),
+            'list' => array(
+                'image_icon' => 'Image Icon',
+                'font_icon' => 'Font Icon'
+            ),
+            'default' => 'image_icon',
+            'dependency' => array(
+                'parameter' => 'style',
+                'value' => 'custom'
+            )
+        ),
         'id' => array(
             'type' => 'image',
             'label' => __('Image Icon', 'domain'),
@@ -130,17 +135,22 @@ class FlipBoxMenu
         'front_text_color' => array(
             'type' => 'color-picker',
             'label' => __('Frontside Text Color', 'domain'),
-            'default' => __('rgb(171, 30, 23)', 'domain')
+            'default' => __('#000', 'domain')
         ),
         'back_text_color' => array(
             'type' => 'color-picker',
             'label' => __('Backside Text Color', 'domain'),
-            'default' => __('rgb(171, 30, 23)', 'domain')
+            'default' => __('#000', 'domain')
         ),
         'link_color' => array(
             'type' => 'color-picker',
             'label' => __('Link Color', 'domain'),
             'default' => __('rgb(171, 30, 23)', 'domain')
+        ),
+        'link_text_color' => array(
+            'type' => 'color-picker',
+            'label' => __('Link Text Color', 'domain'),
+            'default' => __('#000', 'domain')
         )
         ), 0, MPCEObject::ENCLOSED);
 

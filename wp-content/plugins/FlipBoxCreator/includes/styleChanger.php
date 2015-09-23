@@ -1,7 +1,4 @@
 <?php 
-/**
-* 
-*/
 class StyleChanger {
 	
 	public function addContentToStyle($content, $id, $style) {

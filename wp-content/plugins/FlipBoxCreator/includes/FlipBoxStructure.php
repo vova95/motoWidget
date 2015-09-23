@@ -4,10 +4,15 @@ class FlipBoxStructure {
 	
 	public function generateFlipBoxLayout($arguments, $postId) {
 
-		if ($arguments['style'] == 'style4' || $arguments['style'] == 'style5' || $arguments['style'] == 'style6') {
+		if ($arguments['style'] == 'style4' || $arguments['style'] == 'style5') {
 			$iconHtml = '<div class="icon-circle-' . $arguments['style'] . '">
 						<i class="image-font image-font-' . $arguments['style'] . ' image-font-' . $arguments['style'] . '-' . $postId . ' ' . $arguments['content'] . '"></i>
 					</div>';
+		} elseif($arguments['style'] == 'style6') {
+			$iconHtml = '<div class="icon-circle-' . $arguments['style'] . ' icon-circle-' . $arguments['style'] . '-' . $postId . '">
+						<i class="image-font image-font-' . $arguments['style'] . ' image-font-' . $arguments['style'] . '-' . $postId . ' ' . $arguments['content'] . '"></i>
+					</div>';
+			
 		} else {
 			$iconHtml = '<img class="icon-' . $arguments['style'] . '" src="' . $arguments['imgSrc'] . '">';
 		}
@@ -65,6 +70,9 @@ class FlipBoxStructure {
             	}
             	.box-section-link-' . $arguments['style'] . '-' . $postId . ' a {
             		color: ' . $arguments['link_text_color'] . ' !important;
+            	}
+            	.icon-circle-' . $arguments['style'] . '-' . $postId . ' {
+            		background: ' . $arguments['circle_color'] . ';
             	}
             	</style>';
 		

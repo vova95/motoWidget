@@ -23,23 +23,18 @@ class FlipBoxMenu
                 'style3' => 'style3',
                 'style4' => 'style4',
                 'style5' => 'style5',
-                'style6' => 'style6',
-                'custom' => 'custom'
+                'style6' => 'style6'
             )
         ),
-        'icon_type' => array(
-            'type' => 'radio-buttons',
-            'label' => __('Icon Type', 'domain'),
-            'list' => array(
-                'image_icon' => 'Image Icon',
-                'font_icon' => 'Font Icon'
-            ),
-            'default' => 'image_icon',
-            'dependency' => array(
-                'parameter' => 'style',
-                'value' => 'custom'
-            )
-        ),
+        // 'icon_type' => array(
+        //     'type' => 'radio-buttons',
+        //     'label' => __('Icon Type', 'domain'),
+        //     'list' => array(
+        //         'image_icon' => 'Image Icon',
+        //         'font_icon' => 'Font Icon'
+        //     ),
+        //     'default' => 'image_icon'
+        // ),
         'id' => array(
             'type' => 'image',
             'label' => __('Image Icon', 'domain'),
@@ -141,6 +136,15 @@ class FlipBoxMenu
             'type' => 'color-picker',
             'label' => __('Backside Text Color', 'domain'),
             'default' => __('#000', 'domain')
+        ),
+        'circle_color' => array(
+            'type' => 'color-picker',
+            'label' => __('Circle Color', 'domain'),
+            'default' => __('#94d533', 'domain'),
+            'dependency' => array(
+                'parameter' => 'style',
+                'value' => 'style6'
+            )
         ),
         'link_color' => array(
             'type' => 'color-picker',

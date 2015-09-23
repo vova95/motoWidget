@@ -44,6 +44,7 @@ function generateFlipBox($atts, $content = null) {
         'border_color_back' => '',
         'front_text_color' => '',
         'back_text_color' => '',
+        'circle_color' => '',
         'link_color' => '',
         'link_text_color' => ''
     ), $atts));
@@ -76,6 +77,7 @@ function generateFlipBox($atts, $content = null) {
         'border_color_back' => $border_color_back,
         'front_text_color' => $front_text_color,
         'back_text_color' => $back_text_color,
+        'circle_color' => $circle_color,
         'link_color' => $link_color,
         'link_text_color' => $link_text_color
     );
